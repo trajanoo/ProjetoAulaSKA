@@ -1,0 +1,50 @@
+.progress-infos{
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 0.6fr 1.2fr 0.6fr 0.6fr 0.1fr;
+    gap: 8px;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.progress-container{
+    width: 100%;
+    height: 60%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    overflow: hidden;
+}
+.progress-remaining{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    height: 100%;
+    font-weight: bold;
+    padding-right: 5%;
+    background-color: var(--color-dark-blue-800);
+}
+
+button{
+    height: 60%;
+    width: 100%;
+
+    font-size: 3em;
+    font-weight: bold;
+
+    background-color: var(--color-dark-blue-800);
+    border: 2px solid var(--color-dark-blue-700);
+    border-radius: 10px;
+
+    color: var(--color-text)
+}

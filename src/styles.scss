@@ -1,0 +1,39 @@
+@use '@angular/material' as mat;
+// @import './images.scss';
+
+html,body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', sans-serif;
+  background-color: var(--color-dark-blue-1000);
+  color: var(--color-text);
+}
+:root{
+  --color-text: white;
+  --icons-color: white;
+
+  --color-dark-blue-1000: #081a2c;
+  --color-dark-blue-900: #11263d;
+  --color-dark-blue-800: #123451;
+  --color-dark-blue-700: #1f4a6e;
+  --color-dark-gray-200: #b4bdca;
+  --color-light-gray-300: #777f87;
+
+  --color-blue-button: #0f78ae;
+
+  --color-error: #d85f61;
+  --color-error-dark: #481e27;
+  --color-sucess: #31c877; 
+  --color-sucess-dark: #16482b;
+  
+  --color-blue: #84d4ef;
+  --color-green: #32cb78;
+  --color-red: #fc7070;
+  --color-yellow: #fcba3f;
+  --color-error: #d85f61;
+}
+
+.custom-dialog .mat.mdc-dialog-component-host{
+  display: block !important;
+  background-color: var(--color-dark-blue-1000);
+}

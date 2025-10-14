@@ -1,0 +1,45 @@
+<div class="terminal-container">
+    <div class="status-bar">
+        <span>Status</span>
+    </div>
+    <div class="terminal-div">
+        <div class="item-infos">
+            <span class="title-style">Item em produção: ...</span>
+
+            <div class="item-content">
+                <div>imagem</div>
+
+                <div class="item-description">
+                    <div>
+                        <span class="item-title-description">Ordem de Produção</span>
+                        <span>ordem</span>
+                    </div>
+                    <div class="production-item-information">
+                        <div>
+                            <span class="item-title-description">Cor do Produto:</span>
+                            <span>cor</span>
+                        </div>
+                        <div class="item-color" [style.background-color]="'red'"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="item-infos">
+            <span class="title-style">Quantidade de Itens</span>
+            <div class="production-infos">
+                <app-production-control [title]="'Produzido'"></app-production-control>
+                <app-production-control [title]="'Rejeitado'"></app-production-control>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <button mat-button (click)="setProductionOrder()" class="stop-button">Parada</button>
+        <button mat-button (click)="setProductionOrder()" class="production-button">Produção</button>
+    </div>
+
+    <div class="footer">
+        Footer
+    </div>
+</div>
