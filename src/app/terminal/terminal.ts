@@ -4,6 +4,8 @@ import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dial
 import { DialogSelect } from '../dialog-select/dialog-select';
 import { Dialog } from '@angular/cdk/dialog';
 
+import productionOrders from '../../assets/files/production-orders.json'
+
 @Component({
   selector: 'app-terminal',
   imports: [ProductionControl, MatDialogModule],
@@ -14,6 +16,8 @@ export class Terminal {
 
   readonly dialog: MatDialog = inject(MatDialog)
 
+  productionOrders: any[] = productionOrders
+
   setProductionOrder() {
     console.log("teste")
     this.openSelectDialog()
@@ -21,7 +25,9 @@ export class Terminal {
 
   openSelectDialog(): any {
     const dialogRef: MatDialogRef<DialogSelect, any> = this.dialog.open(DialogSelect, {
-      width: '950px'
+      width: '950px',
+      panelClass: 'custom-dialog',
+      data: {dialogTitle: 'Teste dialog', optionsList: this.productionOrders}
     });
 
     return new Promise((resolve) => {
