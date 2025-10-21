@@ -48,3 +48,16 @@ button{
 
     color: var(--color-text)
 }
+
+
+.progress-filled {
+    height: 100%;
+    padding-left: 5%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+
+    transition: width 0.5s ease;
+}

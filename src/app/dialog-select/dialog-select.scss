@@ -54,3 +54,12 @@ button {
     color: var(--color-text) !important;
     background-color: var(--color-blue-button);
 }
+
+.options:hover {
+    background-color: var(--color-dark-blue-1000);
+    transition: ease;
+}
+
+.selected {
+    background-color: var(--color-dark-blue-1000);
+}

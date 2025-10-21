@@ -1,7 +1,7 @@
 <h2>{{dialogTitle}}</h2>
 
 <div class="list-options">
-    <div *ngFor="let option of optionsList" class="options">
+    <div *ngFor="let option of optionsList" class="options" [class.selected]="option.key === selectedOption?.key" (click)="setSelectedOption(option)">
         <i [class]="option.icon"></i>
         <div class="options-description">
             <span class="option-label">{{option.label}}</span>

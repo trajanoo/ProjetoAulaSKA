@@ -1,25 +1,26 @@
 <div class="terminal-container">
-    <div class="status-bar">
-        <span>Status</span>
+    <div class="status-bar" [style.background-color]="productionStatus.color">
+        <span>{{productionStatus.status}}</span>
     </div>
+
     <div class="terminal-div">
         <div class="item-infos">
-            <span class="title-style">Item em produção: ...</span>
+            <span class="title-style">Item em produção: {{productionOrder.value}}</span>
 
             <div class="item-content">
-                <div>imagem</div>
+                <img [src]="productionOrder.productImage" alt="">
 
                 <div class="item-description">
                     <div>
-                        <span class="item-title-description">Ordem de Produção</span>
-                        <span>ordem</span>
+                        <span class="item-title-description">Ordem de Produção: </span>
+                        <span>{{productionOrder.key}}</span>
                     </div>
                     <div class="production-item-information">
-                        <div>
-                            <span class="item-title-description">Cor do Produto:</span>
-                            <span>cor</span>
+                        <div class="production-item">
+                            <span class="item-title-description">Cor do Produto: </span>
+                            <span>{{productionOrder.color}}</span>
                         </div>
-                        <div class="item-color" [style.background-color]="'red'"></div>
+                        <div class="item-color" [style.background-color]="OrderColors_e[productionOrder.color]"></div>
                     </div>
                 </div>
             </div>
@@ -35,7 +36,7 @@
     </div>
 
     <div class="action-buttons">
-        <button mat-button class="stop-button">Parada</button>
+        <button mat-button class="stop-button" [disabled]="productionStatus.status === ProductionStatus_e.WaitingProduction" (click)="setStopType()">Parada</button>
         <button mat-button (click)="setProductionOrder()" class="production-button">Produção</button>
     </div>
 
