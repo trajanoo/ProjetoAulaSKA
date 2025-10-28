@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, QueryList, ViewChildren } from '@angular/core';
 import { ProductionControl } from '../production-control/production-control';
 import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { DialogSelect } from '../dialog-select/dialog-select';
@@ -17,6 +17,8 @@ import stopTypes from '../../assets/files/stop-types.json'
 })
 export class Terminal {
 
+  @ViewChildren(ProductionControl) productionControl!: QueryList<ProductionControl>;
+
   readonly dialog: MatDialog = inject(MatDialog)
 
   productionOrders: ProductionOrder[] = productionOrders as ProductionOrder[];
@@ -27,6 +29,8 @@ export class Terminal {
   OrderColors_e: typeof OrderColors_e = OrderColors_e;
   ProductionStatus_e: typeof ProductionStatus_e = ProductionStatus_e;
 
+  disabledStyle: any = {};
+
   async setProductionOrder(): Promise<void> {
     const dialogData: Object = {
       dialogTitle: 'Selecionar ordem de produção',
@@ -36,11 +40,17 @@ export class Terminal {
 
     console.log("teste evento de click")
     const newProductionOrder: ProductionOrder = await this.openSelectDialog(dialogData);
-    console.log('ttttttttt', newProductionOrder)
     if(!newProductionOrder) return;
 
-    this.productionOrder = newProductionOrder;
+    this.productionControl.forEach((prodControl: any) => prodControl.resetValues());
     this.productionStatus = new ProductionStatus(ProductionStatus_e.InProduction, ProductionStatusColor_e.InProduction);
+
+    if(newProductionOrder.key === this.productionOrder.key)
+      return;
+
+    this.productionOrder = newProductionOrder;
+    this.disabledStyle = {'opacity': !this.productionOrder.key || (this.productionStatus.color === ProductionStatusColor_e.Stop) ? '0.5' : '1'}
+    console.log('ProductionStatus_e :', ProductionStatus_e)
   }
 
   async setStopType() {

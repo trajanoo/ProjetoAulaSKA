@@ -22,6 +22,12 @@ export class ProductionControl {
   ProductionStatus_e: typeof ProductionStatus_e = ProductionStatus_e
   ProductionStatusColor_e: typeof ProductionStatusColor_e = ProductionStatusColor_e
 
+  resetValues(): void {
+    this.value = 0;
+    this.valuePercentage = 0;
+    
+  }
+
   getChartColor(isRemainingArea: boolean = false) {
     if(this.value === 0 || !this.productionOrderKey || (isRemainingArea && this.checkIfHasRemaining()))
     return 'var(--color-dark-blue-800)';
