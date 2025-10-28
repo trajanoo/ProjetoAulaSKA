@@ -3,15 +3,17 @@ import { ProductionControl } from '../production-control/production-control';
 import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { DialogSelect } from '../dialog-select/dialog-select';
 import { Dialog } from '@angular/cdk/dialog';
+import { NgStyle } from '@angular/common';
 import { ProductionOrder } from '../../../../common/ProductionOrder'///
 import productionOrders from '../../assets/files/production-orders.json'
 import { OrderColors_e, ProductionStatus_e, ProductionStatusColor_e } from '../../../../common/enums/enum';
 import { ProductionStatus} from '../../../../common/ProductionStatus'
 import stopTypes from '../../assets/files/stop-types.json'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-terminal',
-  imports: [ProductionControl, MatDialogModule],
+  imports: [ProductionControl, MatDialogModule, NgStyle],
   templateUrl: './terminal.html',
   styleUrl: './terminal.scss'
 })
@@ -30,6 +32,8 @@ export class Terminal {
   ProductionStatus_e: typeof ProductionStatus_e = ProductionStatus_e;
 
   disabledStyle: any = {};
+
+  constructor(private router: Router) {}
 
   async setProductionOrder(): Promise<void> {
     const dialogData: Object = {
@@ -80,7 +84,10 @@ export class Terminal {
         resolve(result);
       })
     })
+    }
 
     
+    openImage(imageUrl: string): void {
+      this.router.navigate(['/image', imageUrl]);
   }
 }

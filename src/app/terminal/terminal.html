@@ -4,11 +4,11 @@
     </div>
 
     <div class="terminal-div">
-        <div class="item-infos">
+        <div class="item-infos" [ngStyle]="disabledStyle">
             <span class="title-style">Item em produção: {{productionOrder.value}}</span>
 
             <div class="item-content">
-                <img [src]="productionOrder.productImage" alt="">
+                <img [src]="productionOrder.productImage" (click)="openImage(productionOrder.productImage)" alt="">
 
                 <div class="item-description">
                     <div>
