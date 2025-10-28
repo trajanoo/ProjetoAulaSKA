@@ -1,12 +1,16 @@
 <div class="progress-infos">
     <span>{{title}}</span>
     <div class="progress-container">
-        <div class="progress-filled"></div>
-        <div class="progress-remaining" [style.width]="'100%'">
-            100
+        <div class="progress-filled" [style.width]="(valuePercentage <= 0 ? 10 : valuePercentage) + '%'" [style.background-color]="getChartColor()"></div>
+        <div class="progress-remaining" [style.width]="(productionOrderQuantity - value) + '%'" [style.background-color]="getChartColor(true)">
+            {{ productionOrderQuantity - value }}
         </div>
-        <div></div>
+        <div class="progress-center">
+            <div *ngIf="value === 100" class="image-medium" [class]="icon"></div>
+            <span *ngIf="value !== 100">{{ valuePercentage }}</span>
+        </div>
     </div>
-    <button mat-button>-</button>
-    <button mat-button>+</button>
+
+    <button mat-button [disabled]="(productionOrderStatus === ProductionStatus_e.WaitingProduction) || (productionOrderStatus === ProductionStatusColor_e.Stop)" (click)="changePercentageValue(false)">-</button>
+    <button mat-button [disabled]="(productionOrderStatus === ProductionStatus_e.WaitingProduction) || (productionOrderStatus === ProductionStatusColor_e.Stop)" (click)="changePercentageValue(true)">+</button>
 </div>

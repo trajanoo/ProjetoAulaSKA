@@ -61,3 +61,12 @@ button{
 
     transition: width 0.5s ease;
 }
+
+.progress-center {
+    font-weight: bold;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
